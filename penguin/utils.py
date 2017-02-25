@@ -14,7 +14,7 @@ def is_valid_source(src_arg):
 def src_as_files(src):
     for src_arg in src:
         if os.path.isdir(src_arg):
-            for pdf in glob.iglob(src_arg + '\*.pdf'):
+            for pdf in glob.iglob(src_arg + os.path.sep + '*.pdf'):
                 yield pdf
         elif os.path.isfile(src_arg):
             yield src_arg
