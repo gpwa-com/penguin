@@ -1,8 +1,8 @@
 import click
 import os
 
-import penguin.pdf
-import penguin.utils
+import penguin.pdf as pdf
+import penguin.utils as utils
 
 
 @click.group()
@@ -27,11 +27,11 @@ def combine(src, dst, bookmark, rmblanks):
 
     """
 
-    if not all((map(penguin.utils.is_valid_source, src))):
+    if not all((map(utils.is_valid_source, src))):
         raise click.BadParameter("src arguments must be either a valid directory"
                                  " or pdf file.")
 
-    combined_pdf = penguin.pdf.combine(src, bookmark, rmblanks)
+    combined_pdf = pdf.combine(src, bookmark, rmblanks)
 
     with open(dst, 'wb') as f:
         combined_pdf.write(f)
