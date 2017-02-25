@@ -11,5 +11,9 @@ python:
   - "nightly" # currently points to 3.7-dev
 # command to install dependencies
 install:
-    - "python setup.py -q install"
-script: "python -m unittest discover tests"
+  - "pip install codecov"
+  - "python setup.py -q install"
+script:
+  - "python -m unittest discover tests"
+# after_success:
+#   - "codecov"
