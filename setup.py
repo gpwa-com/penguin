@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='gpw',
+    name='penguin',
     version='0.1',
     packages=find_packages(),
     include_package_data=True,
@@ -11,6 +11,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        gpw=gpw.scripts.gpwcli:gpw
+        penguin=penguin.scripts.penguin_cli:penguin
     ''',
 )

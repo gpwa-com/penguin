@@ -1,22 +1,22 @@
 import click
 import os
 
-from gpw.pdf import combine
-from gpw.utils import is_valid_source
+from penguin.pdf import combine
+from penguin.utils import is_valid_source
 
 
 @click.group()
-def gpw():
+def penguin():
     pass
 
-@gpw.command()
+@penguin.command()
 @click.argument('src', nargs=-1)
 @click.argument('dst')
 @click.option('--bookmark', 'bookmark', flag_value='include-bookmarks',
               default=True)
 @click.option('--remove-blank-pages', 'rmblanks', flag_value='remove-blanks-pages',
               default=False)
-def combinepdfs(src, dst, bookmark, rmblanks):
+def combine(src, dst, bookmark, rmblanks):
     """Combine Pdf files from the source provided into the destination file.
 
     :param src: The source Pdf file(s). src can either be a list of individual
@@ -37,4 +37,4 @@ def combinepdfs(src, dst, bookmark, rmblanks):
         combined_pdf.write(f)
 
 if __name__ == '__main__':
-    gpw()
+    penguin()
