@@ -1,8 +1,8 @@
 import click
 import os
 
-from penguin.pdf import combine
-from penguin.utils import is_valid_source
+import penguin.pdf
+import penguin.utils
 
 
 @click.group()
@@ -23,15 +23,15 @@ def combine(src, dst, bookmark, rmblanks):
         files or directories containing Pdf files.
     :param dst: The output file destination.
     :param bookmark: True if the combined Pdf should include bookmarks.
-    :param rm_blanks: True if blank pages should be removed from the combined Pdf.
+    :param rmblanks: True if blank pages should be removed from the combined Pdf.
 
     """
 
-    if not all((map(is_valid_source, src))):
+    if not all((map(penguin.utils.is_valid_source, src))):
         raise click.BadParameter("src arguments must be either a valid directory"
                                  " or pdf file.")
 
-    combined_pdf = combine(src, bookmark, rmblanks)
+    combined_pdf = penguin.pdf.combine(src, bookmark, rmblanks)
 
     with open(dst, 'wb') as f:
         combined_pdf.write(f)
