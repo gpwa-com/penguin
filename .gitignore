@@ -45,6 +45,9 @@ coverage.xml
 *,cover
 .hypothesis/
 
+# PyCharm
+.idea/
+
 # Scrapy stuff:
 .scrapy
 
