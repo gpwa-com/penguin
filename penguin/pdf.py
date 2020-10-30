@@ -23,7 +23,7 @@ def combine(src, bookmark, rmblanks):
         # this is used for bookmarking.
         iwriter = writer.getNumPages()
 
-        reader = PdfFileReader(pdf)
+        reader = PdfFileReader(pdf, strict=False)
         append(writer, reader, rmblanks)
 
         if bookmark:
@@ -74,7 +74,7 @@ def bookmark_tree(root, writer=PdfFileWriter(), bm_queue=None, bm_stack=None):
     for pdf in pdffiles(root):
         current_page = writer.getNumPages()
         # Create the PdfFileReader object.
-        reader = PdfFileReader(os.path.join(root, pdf))
+        reader = PdfFileReader(os.path.join(root, pdf), strict=False)
         # Add each page. Presently, removing blank pages is not supported using
         # the bookmark_tree.
         append(writer, reader, rmblanks=False)
